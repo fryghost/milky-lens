@@ -11,7 +11,7 @@ npm run report      # Full pipeline: validate → excel → html
 npm install         # Install dependencies (ExcelJS)
 ```
 
-Scripts read product data from `../milk_powder_data/data/products/` (relative to the `scripts/` directory). Reports are written to the `milky-lens/` root and `milky-lens/reports/`.
+Scripts read product data from `../milk_powder_data/data/products/` (relative to the `scripts/` directory). Reports are written to `milk_powder_data/` (excel) and `milk_powder_data/reports/` (html).
 
 ## Architecture
 

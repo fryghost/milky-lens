@@ -553,7 +553,7 @@ sheet5.addRow([]);
 sheet5.addRow(['注：月均费用按宝宝每月约3000g(3kg)奶粉消耗量估算']);
 
 // Save
-const outputPath = path.join(__dirname, '..', '奶粉配方对比分析.xlsx');
+const outputPath = path.join(__dirname, '..', '..', 'milk_powder_data', '奶粉配方对比分析.xlsx');
 workbook.xlsx.writeFile(outputPath)
   .then(() => {
     console.log(`Excel文件已创建: ${outputPath}`);

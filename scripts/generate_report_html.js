@@ -170,163 +170,175 @@ const html = `<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>奶粉配方对比分析（2段 · 2026年5月） — 以惠氏启赋蕴淳为基准</title>
 <style>
-/* ========== Design System ========== */
+/* ========== Clay Design System ========== */
 :root {
-  --color-primary: #1E40AF;
-  --color-primary-light: #3B82F6;
-  --color-accent: #D97706;
-  --color-bg: #F8FAFC;
-  --color-surface: #FFFFFF;
-  --color-fg: #1E3A8A;
-  --color-text: #1E293B;
-  --color-text-secondary: #64748B;
-  --color-muted: #E9EEF6;
-  --color-border: #DBEAFE;
-  --color-success: #16A34A;
-  --color-danger: #DC2626;
-  --color-warning: #F59E0B;
-  --color-baseline: #FFF0B0;
-  --color-red-fill: #FFC7CE;
-  --color-green-fill: #C6EFCE;
-  --radius: 8px;
-  --radius-lg: 12px;
-  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
-  --shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
-  --shadow-lg: 0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.06);
-  --transition: 150ms ease;
+  --ink: #0a0a0a;
+  --body: #3a3a3a;
+  --body-strong: #1a1a1a;
+  --muted: #6a6a6a;
+  --muted-soft: #9a9a9a;
+  --hairline: #e5e5e5;
+  --hairline-soft: #f0f0f0;
+  --canvas: #fffaf0;
+  --surface-soft: #faf5e8;
+  --surface-card: #f5f0e0;
+  --surface-strong: #ebe6d6;
+  --on-dark: #ffffff;
+  --brand-pink: #d4816e;
+  --brand-teal: #1a3a3a;
+  --brand-lavender: #b8a4ed;
+  --brand-peach: #ffb084;
+  --brand-ochre: #e8b94a;
+  --brand-mint: #a4d4c5;
+  --brand-coral: #ff6b5a;
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --baseline: #f5f0e0;
+  --higher: #ffe0e3;
+  --lower: #c8f0d5;
+  --radius-xs: 6px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-pill: 9999px;
+  --transition: 180ms ease;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  font-family: 'Fira Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background: var(--color-bg);
-  color: var(--color-text);
-  line-height: 1.6;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--canvas);
+  color: var(--body);
+  line-height: 1.55;
+  font-size: 14px;
   min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* ========== Header ========== */
 .header {
-  background: linear-gradient(135deg, var(--color-primary) 0%, #1E3A8A 100%);
-  color: #fff;
-  padding: 24px 32px;
+  background: var(--canvas);
+  border-bottom: 1px solid var(--hairline);
+  padding: 0 32px;
+  height: 64px;
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  display: flex;
+  align-items: center;
 }
 
 .header-inner {
-  max-width: 1400px;
+  max-width: 1280px;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
   gap: 16px;
 }
 
 .header h1 {
-  font-family: 'Fira Code', 'SF Mono', monospace;
-  font-size: 22px;
-  font-weight: 600;
-  letter-spacing: -0.5px;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.3px;
+  color: var(--ink);
 }
 
 .header-stats {
   display: flex;
   gap: 24px;
-  font-size: 14px;
-  opacity: 0.9;
+  font-size: 13px;
+  color: var(--muted);
 }
 
 .header-stat { text-align: center; }
-.header-stat-value { font-size: 24px; font-weight: 700; font-family: 'Fira Code', monospace; }
-.header-stat-label { font-size: 12px; opacity: 0.7; }
+.header-stat-value { font-size: 18px; font-weight: 600; color: var(--ink); }
+.header-stat-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
 
 /* ========== Tab Navigation ========== */
 .tab-nav {
-  background: var(--color-surface);
-  border-bottom: 2px solid var(--color-border);
+  background: var(--canvas);
+  border-bottom: 1px solid var(--hairline);
   position: sticky;
-  top: 96px;
+  top: 64px;
   z-index: 99;
   display: flex;
   justify-content: center;
-  gap: 0;
-  box-shadow: var(--shadow-sm);
+  gap: 8px;
+  padding: 12px 16px;
 }
 
 .tab-btn {
-  padding: 14px 28px;
+  padding: 8px 20px;
   border: none;
-  background: none;
-  font-size: 15px;
+  background: transparent;
+  font-size: 14px;
   font-weight: 500;
-  color: var(--color-text-secondary);
+  color: var(--muted);
   cursor: pointer;
-  border-bottom: 3px solid transparent;
+  border-radius: var(--radius-pill);
   transition: all var(--transition);
   font-family: inherit;
   white-space: nowrap;
+  height: 36px;
 }
-
-.tab-btn:hover { color: var(--color-primary); background: var(--color-muted); }
-.tab-btn.active { color: var(--color-primary); border-bottom-color: var(--color-primary); font-weight: 600; }
+.tab-btn:hover { color: var(--ink); background: var(--surface-card); }
+.tab-btn.active {
+  color: var(--ink);
+  background: var(--surface-card);
+  font-weight: 600;
+}
 
 /* ========== Main Content ========== */
 .main {
-  max-width: 1400px;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 24px 32px;
+  padding: 32px;
 }
-
-.tab-content { display: none; }
-.tab-content.active { display: block; animation: fadeIn 200ms ease; }
 
 @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
 
 /* ========== KPI Cards ========== */
 .kpi-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 16px;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
 }
 
 .kpi-card {
-  background: var(--color-surface);
-  border-radius: var(--radius-lg);
-  padding: 20px;
-  box-shadow: var(--shadow);
-  border-left: 4px solid var(--color-primary);
+  border-radius: var(--radius-xl);
+  padding: 28px 24px;
+  color: var(--ink);
 }
+.kpi-card:nth-child(1) { background: var(--brand-pink); color: var(--on-dark); }
+.kpi-card:nth-child(2) { background: var(--brand-teal); color: var(--on-dark); }
+.kpi-card:nth-child(3) { background: var(--brand-lavender); }
+.kpi-card:nth-child(4) { background: var(--brand-peach); }
 
-.kpi-card.accent { border-left-color: var(--color-accent); }
-.kpi-card.success { border-left-color: var(--color-success); }
-.kpi-card.warning { border-left-color: var(--color-warning); }
-
-.kpi-label { font-size: 13px; color: var(--color-text-secondary); margin-bottom: 4px; }
-.kpi-value { font-size: 28px; font-weight: 700; font-family: 'Fira Code', monospace; color: var(--color-fg); }
-.kpi-sub { font-size: 12px; color: var(--color-text-secondary); margin-top: 2px; }
+.kpi-card .kpi-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; opacity: 0.75; }
+.kpi-card .kpi-value { font-size: 36px; font-weight: 500; line-height: 1.1; letter-spacing: -1px; margin-bottom: 4px; }
+.kpi-card .kpi-sub { font-size: 13px; opacity: 0.7; }
 
 /* ========== Section Headers ========== */
 .section-title {
-  font-family: 'Fira Code', monospace;
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--color-fg);
-  margin-bottom: 16px;
-  padding-bottom: 8px;
-  border-bottom: 2px solid var(--color-border);
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.3px;
+  color: var(--ink);
+  margin-bottom: 20px;
 }
 
 /* ========== Tables ========== */
 .table-container {
-  background: var(--color-surface);
+  background: var(--canvas);
+  border: 1px solid var(--hairline);
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow);
   overflow: hidden;
   margin-bottom: 24px;
 }
@@ -335,32 +347,32 @@ body {
   display: flex;
   gap: 12px;
   padding: 16px 20px;
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--hairline);
   flex-wrap: wrap;
   align-items: center;
+  background: var(--surface-soft);
 }
 
 .table-toolbar input, .table-toolbar select {
-  padding: 8px 12px;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
+  padding: 10px 14px;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-md);
   font-size: 14px;
   font-family: inherit;
-  background: var(--color-bg);
-  color: var(--color-text);
+  background: var(--canvas);
+  color: var(--ink);
+  height: 40px;
 }
-
 .table-toolbar input:focus, .table-toolbar select:focus {
   outline: none;
-  border-color: var(--color-primary-light);
-  box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
+  border-color: var(--ink);
 }
 
 .search-input { min-width: 200px; }
 
 .table-wrapper {
   overflow-x: auto;
-  max-height: 70vh;
+  max-height: 65vh;
   overflow-y: auto;
 }
 
@@ -373,95 +385,92 @@ table {
 thead { position: sticky; top: 0; z-index: 10; }
 
 th {
-  background: var(--color-primary);
-  color: #fff;
-  padding: 10px 12px;
+  background: var(--surface-strong);
+  color: var(--ink);
+  padding: 10px 14px;
   text-align: left;
   font-weight: 600;
-  font-size: 12px;
+  font-size: 11px;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 1.2px;
   cursor: pointer;
   white-space: nowrap;
   user-select: none;
+  border-bottom: 2px solid var(--hairline);
+}
+th:hover { background: var(--surface-card); }
+
+th .sort-arrow { margin-left: 4px; font-size: 10px; color: var(--muted); }
+
+td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--hairline-soft);
+  white-space: nowrap;
+  color: var(--body);
 }
 
-th:hover { background: #1E3A8A; }
+tr:hover td { background: var(--surface-soft); }
 
-th .sort-arrow { margin-left: 4px; font-size: 10px; }
-th.sorted-asc .sort-arrow::after { content: ' ▲'; }
-th.sorted-desc .sort-arrow::after { content: ' ▼'; }
+.baseline-row td { background: var(--baseline) !important; font-weight: 600; color: var(--ink); }
 
-td { padding: 8px 12px; border-bottom: 1px solid var(--color-border); white-space: nowrap; }
+.stars { color: var(--brand-ochre); letter-spacing: 1px; font-size: 13px; }
 
-tr:hover td { background: #F0F4FF; }
-
-.baseline-row td { background: var(--color-baseline) !important; font-weight: 600; }
-
-.stars { color: var(--color-accent); letter-spacing: 1px; font-size: 14px; }
-
-.sim-high { color: var(--color-success); font-weight: 700; }
+.sim-high { color: var(--brand-teal); font-weight: 700; }
+.sim-mid { color: var(--brand-ochre); font-weight: 600; }
+.sim-low { color: var(--brand-coral); font-weight: 600; }
 .btn-compare {
-  padding: 4px 12px;
-  border: 1px solid var(--color-primary);
-  border-radius: 4px;
-  background: transparent;
-  color: var(--color-primary);
+  padding: 6px 14px;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-md);
+  background: var(--canvas);
+  color: var(--ink);
   cursor: pointer;
   font-size: 12px;
   font-family: inherit;
+  font-weight: 600;
   white-space: nowrap;
-  transition: all 0.15s;
+  transition: all var(--transition);
+  height: 32px;
 }
-.btn-compare:hover {
-  background: var(--color-primary);
-  color: #fff;
-}
-.sim-mid { color: var(--color-accent); font-weight: 600; }
-.sim-low { color: var(--color-danger); font-weight: 600; }
+.btn-compare:hover { background: var(--ink); color: var(--on-dark); border-color: var(--ink); }
 
 .tag {
   display: inline-block;
-  padding: 2px 8px;
-  border-radius: 12px;
-  font-size: 11px;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  font-size: 12px;
   font-weight: 600;
 }
 
-.tag-rec { background: #DCFCE7; color: #166534; }
-.tag-ok { background: #FEF3C7; color: #92400E; }
-.tag-gen { background: #F3F4F6; color: #6B7280; }
+.tag-rec { background: var(--brand-mint); color: #0a3a2a; }
+.tag-ok { background: var(--brand-peach); color: #5a3020; }
+.tag-gen { background: var(--surface-card); color: var(--muted); }
 
 /* ========== Comparison Panel ========== */
 .compare-selector {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   align-items: flex-start;
 }
 
 /* ===== Searchable Dropdown ===== */
-.ss-wrap {
-  position: relative;
-  min-width: 200px;
-}
+.ss-wrap { position: relative; min-width: 200px; }
 .ss-input {
   width: 100%;
   padding: 10px 14px;
-  border: 2px solid var(--color-border);
-  border-radius: var(--radius);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-md);
   font-size: 14px;
   font-family: inherit;
-  background: var(--color-surface);
-  color: var(--color-fg);
+  background: var(--canvas);
+  color: var(--ink);
   box-sizing: border-box;
   cursor: pointer;
+  height: 40px;
 }
-.ss-input:focus {
-  outline: none;
-  border-color: var(--color-primary-light);
-}
+.ss-input:focus { outline: none; border-color: var(--ink); }
 .ss-dropdown {
   display: none;
   position: absolute;
@@ -470,28 +479,24 @@ tr:hover td { background: #F0F4FF; }
   right: 0;
   max-height: 280px;
   overflow-y: auto;
-  background: var(--color-surface);
-  border: 2px solid var(--color-primary-light);
-  border-top: none;
-  border-radius: 0 0 var(--radius) var(--radius);
+  background: var(--canvas);
+  border: 1px solid var(--ink);
+  border-radius: var(--radius-md);
   z-index: 100;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
-.ss-dropdown.open {
-  display: block;
-}
+.ss-dropdown.open { display: block; }
 .ss-option {
-  padding: 8px 14px;
+  padding: 10px 14px;
   cursor: pointer;
   font-size: 13px;
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--hairline-soft);
 }
 .ss-option:last-child { border-bottom: none; }
-.ss-option:hover { background: var(--color-primary); color: #fff; }
-.ss-option.selected { background: var(--color-muted); font-weight: 700; }
+.ss-option:hover { background: var(--surface-card); color: var(--ink); }
+.ss-option.selected { background: var(--surface-soft); font-weight: 600; }
 .ss-no-result {
   padding: 12px 14px;
-  color: var(--color-text-secondary);
+  color: var(--muted);
   font-size: 13px;
   text-align: center;
 }
@@ -499,86 +504,106 @@ tr:hover td { background: #F0F4FF; }
 .btn {
   padding: 10px 20px;
   border: none;
-  border-radius: var(--radius);
+  border-radius: var(--radius-md);
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
   transition: all var(--transition);
   font-family: inherit;
+  height: 40px;
 }
-
-.btn-primary { background: var(--color-primary); color: #fff; }
-.btn-primary:hover { background: #1E3A8A; }
-.btn-secondary { background: var(--color-muted); color: var(--color-text); }
-.btn-secondary:hover { background: var(--color-border); }
-.btn-sm { padding: 6px 12px; font-size: 13px; }
+.btn-primary { background: var(--ink); color: var(--on-dark); }
+.btn-primary:hover { background: #2a2a2a; }
+.btn-secondary { background: var(--canvas); color: var(--ink); border: 1px solid var(--hairline); }
+.btn-secondary:hover { background: var(--surface-soft); }
+.btn-sm { padding: 6px 14px; font-size: 13px; height: 32px; }
 
 .compare-table td { min-width: 90px; }
-.compare-table td.higher { background: var(--color-red-fill); font-weight: 600; }
-.compare-table td.lower { background: var(--color-green-fill); font-weight: 600; }
-.compare-table td.baseline-col { background: var(--color-baseline); font-weight: 600; }
+.compare-table td.higher { background: var(--higher); font-weight: 600; color: #b03040; }
+.compare-table td.lower { background: var(--lower); font-weight: 600; color: #1a6030; }
+.compare-table td.baseline-col { background: var(--baseline); font-weight: 600; }
 
 /* ========== Brand Chart ========== */
-.brand-chart { display: flex; gap: 8px; align-items: flex-end; height: 160px; padding: 8px 0; flex-wrap: wrap; }
+.brand-chart {
+  display: flex; gap: 16px; align-items: flex-end; height: 160px;
+  padding: 24px 20px 12px; flex-wrap: wrap;
+}
 
-.brand-bar-container { display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 60px; }
+.brand-bar-container { display: flex; flex-direction: column; align-items: center; gap: 6px; min-width: 56px; }
 
 .brand-bar {
-  width: 48px;
-  background: linear-gradient(180deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
-  border-radius: 4px 4px 0 0;
-  transition: height 300ms ease;
+  width: 44px;
+  background: var(--ink);
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  transition: height 400ms ease;
+  opacity: 0.85;
 }
 
-.brand-bar-label { font-size: 11px; color: var(--color-text-secondary); text-align: center; }
-.brand-bar-count { font-size: 12px; font-weight: 700; color: var(--color-fg); }
+.brand-bar-label { font-size: 11px; color: var(--muted); text-align: center; font-weight: 500; }
+.brand-bar-count { font-size: 12px; font-weight: 600; color: var(--ink); }
 
-/* ========== KPI for similarity ========== */
+/* ========== Similarity bars ========== */
 .sim-bar-bg {
-  width: 80px; height: 6px; background: #E5E7EB; border-radius: 3px;
-  display: inline-block; vertical-align: middle; margin-left: 6px;
+  width: 80px; height: 6px; background: var(--hairline); border-radius: 3px;
+  display: inline-block; vertical-align: middle; margin-left: 8px;
 }
 .sim-bar-fill { height: 100%; border-radius: 3px; }
-.sim-bar-fill.high { background: var(--color-success); }
-.sim-bar-fill.mid { background: var(--color-accent); }
-.sim-bar-fill.low { background: var(--color-danger); }
+.sim-bar-fill.high { background: var(--brand-teal); }
+.sim-bar-fill.mid { background: var(--brand-ochre); }
+.sim-bar-fill.low { background: var(--brand-coral); }
+
+/* ========== Recommendation cards ========== */
+.rec-card-header {
+  padding: 16px 24px;
+  background: var(--surface-soft);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0;
+  border-bottom: 1px solid var(--hairline);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  color: var(--ink);
+}
+
+.rec-card-body {
+  padding: 8px 0;
+}
+
+.rec-card-note {
+  padding: 16px 24px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+/* ========== Footer ========== */
+.footer {
+  background: var(--surface-soft);
+  padding: 48px 32px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 2;
+  border-top: 1px solid var(--hairline);
+  margin-top: 48px;
+}
+.footer strong { color: var(--body); }
 
 /* ========== Responsive ========== */
 @media (max-width: 768px) {
-  .header { padding: 16px; }
-  .header h1 { font-size: 18px; }
+  .header { padding: 0 16px; height: 56px; }
+  .header h1 { font-size: 17px; }
   .header-stats { gap: 12px; }
-  .header-stat-value { font-size: 18px; }
-  .tab-btn { padding: 10px 16px; font-size: 13px; }
-  .main { padding: 16px; }
-  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  .header-stat-value { font-size: 16px; }
+  .tab-btn { padding: 6px 14px; font-size: 12px; }
+  .main { padding: 20px 16px; }
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .kpi-card { padding: 20px 16px; }
+  .kpi-card .kpi-value { font-size: 28px; }
 }
 @media (max-width: 480px) {
   .kpi-grid { grid-template-columns: 1fr; }
-  .tab-btn { padding: 10px 12px; font-size: 12px; }
-}
-
-/* ========== Dark Mode ========== */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-bg: #0F172A;
-    --color-surface: #1E293B;
-    --color-fg: #E2E8F0;
-    --color-text: #CBD5E1;
-    --color-text-secondary: #94A3B8;
-    --color-muted: #334155;
-    --color-border: #334155;
-    --color-baseline: #3D3500;
-    --color-red-fill: #7F1D1D;
-    --color-green-fill: #14532D;
-  }
-  .header { background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 100%); }
-  tr:hover td { background: #1E293B; }
-  .tag-rec { background: #14532D; color: #86EFAC; }
-  .tag-ok { background: #713F12; color: #FDE68A; }
-  .tag-gen { background: #374151; color: #D1D5DB; }
-  .sim-bar-bg { background: #374151; }
-  .kpi-card { background: var(--color-surface); }
+  .tab-btn { padding: 6px 12px; font-size: 11px; }
+  .header h1 { font-size: 15px; }
 }
 </style>
 </head>
@@ -586,7 +611,7 @@ tr:hover td { background: #F0F4FF; }
 
 <header class="header">
   <div class="header-inner">
-    <h1>🍼 奶粉配方对比分析（2段 · 2026年5月）</h1>
+    <h1>奶粉配方对比分析 <span style="font-weight:400;color:var(--muted)">2段 · 2026年5月</span></h1>
     <div class="header-stats">
       <div class="header-stat"><div class="header-stat-value">${productData.length}</div><div class="header-stat-label">款2段奶粉</div></div>
       <div class="header-stat"><div class="header-stat-value">${Object.keys(brandCount).length}</div><div class="header-stat-label">个品牌</div></div>
@@ -597,14 +622,20 @@ tr:hover td { background: #F0F4FF; }
 </header>
 
 <nav class="tab-nav" id="tabNav">
-  <button class="tab-btn active" data-tab="overview">📊 总览</button>
-  <button class="tab-btn" data-tab="similarity">🔬 相似度分析</button>
-  <button class="tab-btn" data-tab="price">💰 价格对比</button>
-  <button class="tab-btn" data-tab="nutrition">🧬 营养对比</button>
-  <button class="tab-btn" data-tab="recommend">🎯 换奶推荐</button>
+  <button class="tab-btn active" data-tab="overview">总览</button>
+  <button class="tab-btn" data-tab="similarity">相似度分析</button>
+  <button class="tab-btn" data-tab="price">价格对比</button>
+  <button class="tab-btn" data-tab="nutrition">营养对比</button>
+  <button class="tab-btn" data-tab="recommend">换奶推荐</button>
 </nav>
 
 <main class="main" id="main"></main>
+
+<footer class="footer">
+  <p>数据来源：<strong>奶粉智库 (naifenzhiku.com)</strong> — 专业婴幼儿配方奶粉数据库</p>
+  <p>共 <strong>${productData.length}</strong> 款2段奶粉完整营养成分对比 · 数据日期：2026年5月</p>
+  <p style="margin-top:8px;font-size:12px;color:var(--muted-soft)">仅供个人学习研究参考，不构成医疗或营养建议。婴幼儿配方奶粉选择请咨询专业医生。</p>
+</footer>
 
 <script>
 const DATA = ${dataJSON};
@@ -995,7 +1026,7 @@ function renderNutrition(main) {
 
   main.innerHTML = \`
     <div class="table-container" style="padding:20px">
-      <p style="margin-bottom:16px;color:var(--color-text-secondary)">选择最多5款产品并排对比，数值以启赋蕴淳为基准进行颜色标记：<span style="background:var(--color-red-fill);padding:2px 8px;border-radius:4px">红色=更高</span> <span style="background:var(--color-green-fill);padding:2px 8px;border-radius:4px">绿色=更低</span> <span style="background:var(--color-baseline);padding:2px 8px;border-radius:4px">黄色=基准</span></p>
+      <p style="margin-bottom:16px;color:var(--muted)">选择最多5款产品并排对比，数值以启赋蕴淳为基准进行颜色标记：<span style="background:var(--higher);padding:2px 8px;border-radius:4px">红色=更高</span> <span style="background:var(--lower);padding:2px 8px;border-radius:4px">绿色=更低</span> <span style="background:var(--baseline);padding:2px 8px;border-radius:4px">黄色=基准</span></p>
       <div class="compare-selector" id="compareSelector">
         \${[1,2,3,4,5].map(n => \`
         <div class="ss-wrap">
@@ -1031,7 +1062,7 @@ function updateCompare() {
   }
   const uniqueNames = [...new Set(names)];
   if (uniqueNames.length === 0) {
-    document.getElementById('compareResult').innerHTML = '<p style="color:var(--color-text-secondary);padding:24px">请选择至少一款产品开始对比</p>';
+    document.getElementById('compareResult').innerHTML = '<p style="color:var(--muted);padding:24px">请选择至少一款产品开始对比</p>';
     return;
   }
 
@@ -1054,7 +1085,7 @@ function updateCompare() {
   let html = '<div class="table-wrapper"><table class="compare-table"><thead><tr><th>营养成分</th><th>单位</th>';
   products.forEach((p, i) => {
     const isB = p.product_name === baselineName;
-    html += \`<th style="\${isB ? 'background:var(--color-accent);' : ''}">\${p.brand}<br>\${p.series}\${isB ? ' 🏠' : ''}</th>\`;
+    html += \`<th style="\${isB ? 'background:var(--brand-ochre);' : ''}">\${p.brand}<br>\${p.series}\${isB ? ' 🏠' : ''}</th>\`;
   });
   html += '</tr></thead><tbody>';
 
@@ -1068,7 +1099,7 @@ function updateCompare() {
   function renderSection(title, nutrients) {
     const filtered = nutrients.filter(n => allNuts.has(n));
     if (filtered.length === 0) return '';
-    let s = \`<tr><td colspan="\${products.length + 2}" style="background:var(--color-muted);font-weight:700;padding:8px 12px;font-size:14px">\${title}</td></tr>\`;
+    let s = \`<tr><td colspan="\${products.length + 2}" style="background:var(--surface-soft);font-weight:700;padding:8px 12px;font-size:14px">\${title}</td></tr>\`;
     filtered.forEach(nut => {
       s += '<tr><td style="font-weight:500">' + nut + '</td>';
       // Unit column
@@ -1076,7 +1107,7 @@ function updateCompare() {
       for (const nm of nmaps) {
         if (nm[nut]) { unit = nm[nut].unit; break; }
       }
-      s += '<td style="color:var(--color-text-secondary);font-size:12px">' + unit + '</td>';
+      s += '<td style="color:var(--muted);font-size:12px">' + unit + '</td>';
 
       // Values
       const baseVal = baseline ? pv(nmaps[products.findIndex(pp => pp.product_name === baselineName)] || {}, nut) : NaN;
@@ -1129,13 +1160,11 @@ function renderRecommend(main) {
   const sameBrand = all.filter(p => p.brand === '惠氏' || p.brand === '启赋')
     .sort((a,b) => b.similarity - a.similarity).slice(0, 2);
 
-  function recCard(title, icon, items, fields) {
+  function recCard(title, items, fields) {
     return \`
-    <div class="table-container" style="margin-bottom:16px">
-      <div style="padding:16px 20px;background:var(--color-muted);font-weight:700;font-size:15px;border-bottom:1px solid var(--color-border)">
-        \${icon} \${title}
-      </div>
-      \${items.length === 0 ? '<div style="padding:16px 20px;color:var(--color-text-secondary)">暂无符合条件的产品</div>' : \`
+    <div class="table-container" style="margin-bottom:20px">
+      <div class="rec-card-header">\${title}</div>
+      \${items.length === 0 ? '<div style="padding:16px 24px;color:var(--muted)">暂无符合条件的产品</div>' : \`
       <table>
         <thead><tr>\${fields.map(f => '<th>' + f + '</th>').join('')}<th>操作</th></tr></thead>
         <tbody>
@@ -1159,23 +1188,20 @@ function renderRecommend(main) {
   }
 
   main.innerHTML = \`
-    <p style="margin-bottom:20px;color:var(--color-text-secondary)">以<strong>惠氏启赋蕴淳 2段</strong>为基准，综合相似度、价格、营养全面性等维度推荐最佳替代方案。月均费用按3kg/月估算。</p>
+    <p style="margin-bottom:24px;color:var(--muted);font-size:14px">以<strong style="color:var(--ink)">惠氏启赋蕴淳 2段</strong>为基准，综合相似度、价格、营养全面性等维度推荐最佳替代方案。月均费用按3kg/月估算。</p>
 
-    \${recCard('配方最相似 TOP3', '🔬', topSim, ['排名', '品牌系列', '相似度', '亮点', '价格'])}
-    \${recCard('高性价比之选（相似度≥65%且<35元/100g）', '💰', topValue, ['排名', '品牌系列', '相似度', '价格', '亮点'])}
-    \${recCard('配方最全面 TOP3（营养素数）', '🧬', topNut, ['排名', '品牌系列', '营养素', '相似度', '价格'])}
-    \${recCard('进口配方推荐', '✈️', imported, ['排名', '品牌系列', '产地', '相似度', '价格', '亮点'])}
-    \${recCard('同品牌平替（惠氏/启赋）', '🏠', sameBrand, ['排名', '品牌系列', '相似度', '价格', '亮点'])}
+    \${recCard('配方最相似 TOP3', topSim, ['排名', '品牌系列', '相似度', '亮点', '价格'])}
+    \${recCard('高性价比之选（相似度≥65%且<35元/100g）', topValue, ['排名', '品牌系列', '相似度', '价格', '亮点'])}
+    \${recCard('配方最全面 TOP3（营养素数）', topNut, ['排名', '品牌系列', '营养素', '相似度', '价格'])}
+    \${recCard('进口配方推荐', imported, ['排名', '品牌系列', '产地', '相似度', '价格', '亮点'])}
+    \${recCard('同品牌平替（惠氏/启赋）', sameBrand, ['排名', '品牌系列', '相似度', '价格', '亮点'])}
 
     <div class="table-container">
-      <div style="padding:16px 20px;background:var(--color-muted);font-weight:700;font-size:15px;border-bottom:1px solid var(--color-border)">
-        ⚠️ 换奶注意事项
-      </div>
-      <div style="padding:16px 20px;line-height:2">
+      <div class="rec-card-header">换奶注意事项</div>
+      <div class="rec-card-note">
         <p><strong>转奶方法：</strong>混合转奶法 — 新奶粉从1/4开始，每3-5天增加1/4，约2周完成转换</p>
         <p><strong>观察要点：</strong>注意宝宝是否有腹泻、便秘、皮疹等不适反应</p>
         <p><strong>时机选择：</strong>避免在宝宝生病、打疫苗期间换奶</p>
-        <p style="margin-top:12px;color:var(--color-text-secondary);font-size:13px">数据来源：奶粉智库(naifenzhiku.com) — 专业奶粉数据库，共\${all.length + 1}款2段奶粉完整营养成分 | 数据日期：2026年5月</p>
       </div>
     </div>
   \`;
@@ -1268,6 +1294,6 @@ renderTab('overview');
 </body>
 </html>`;
 
-const outputPath = path.join(__dirname, '..', 'reports', '奶粉配方对比分析.html');
+const outputPath = path.join(__dirname, '..', '..', 'milk_powder_data', 'reports', '奶粉配方对比分析.html');
 fs.writeFileSync(outputPath, html, 'utf-8');
 console.log('HTML report generated: ' + outputPath);

@@ -24,7 +24,8 @@ Phase 1: 数据采集          Phase 2: Excel 生成        Phase 3: HTML 报告
 ─────────────────         ─────────────────         ─────────────────
 Playwright 浏览器     →    node scripts/        →    node scripts/
 采集产品营养数据           create_excel.js           generate_report_html.js
-存入 data/products/       → 奶粉配方对比分析.xlsx    → reports/奶粉配方对比分析.html
+存入 milk_powder_data/     → milk_powder_data/       → milk_powder_data/reports/
+   data/products/            奶粉配方对比分析.xlsx      奶粉配方对比分析.html
 ```
 
 每个 Phase 可独立运行。如果已有完整 JSON 数据，可直接跳到 Phase 2 或 3。
@@ -37,10 +38,10 @@ Playwright 浏览器     →    node scripts/        →    node scripts/
 
 核心流程：
 1. **确定目标**：品牌、段位、基准产品
-2. **应用 Cookies**：从 `data/cookies.txt` 加载登录态
+2. **应用 Cookies**：从 `milk_powder_data/data/cookies.txt` 加载登录态
 3. **发现产品 ID**：通过品牌页面或搜索
 4. **批量提取**：每批最多 7 个产品
-5. **保存 JSON**：存入 `data/products/`
+5. **保存 JSON**：存入 `milk_powder_data/data/products/`
 
 > **CRITICAL**: Playwright JS 代码必须用 `var` 和传统 for 循环，不支持 `let`/`const`/`for...of`。
 
@@ -87,28 +88,24 @@ node scripts/generate_report_html.js
 ## 项目文件结构
 
 ```
-milky-lens/
-├── data/
-│   ├── products/               # 产品独立 JSON 文件
-│   ├── cookies.txt             # 奶粉智库 session cookies
-│   ├── progress.json           # 采集进度跟踪
-│   └── merged_products.json    # 合并数据集
-├── scripts/
-│   ├── create_excel.js         # Excel 报告生成
-│   ├── generate_report_html.js # HTML 仪表盘生成
-│   ├── merge_products.js       # 合并产品 JSON
-│   └── validate_products.js    # 数据质量检查
-├── reports/
-│   └── 奶粉配方对比分析.html    # 交互式 HTML 报告
-├── 奶粉配方对比分析.xlsx        # Excel 对比报告
-├── README.md                   # 项目说明
-└── .claude/skills/milky-lens/
-    ├── SKILL.md                 # 本文件
-    └── references/
-        ├── data-collection.md  # 数据采集详细指南
-        ├── excel-generation.md # Excel 生成说明
-        ├── html-generation.md  # HTML 生成说明
-        └── similarity_algorithm.md  # 相似度算法详解
+workspace/
+├── milk_powder_data/data/        # 数据目录（运行时数据）
+│   ├── products/                 # 产品独立 JSON 文件
+│   ├── cookies.txt               # 奶粉智库 session cookies
+│   ├── progress.json             # 采集进度跟踪
+│   └── merged_products.json      # 合并数据集
+├── milk_powder_data/reports/     # 生成的报告
+│   └── 奶粉配方对比分析.html      # 交互式 HTML 报告
+├── milk_powder_data/奶粉配方对比分析.xlsx  # Excel 对比报告
+├── milky-lens/                   # 本仓库（代码，可发布到 GitHub）
+│   ├── scripts/
+│   │   ├── create_excel.js       # Excel 报告生成
+│   │   ├── generate_report_html.js # HTML 仪表盘生成
+│   │   ├── merge_products.js     # 合并产品 JSON
+│   │   └── validate_products.js  # 数据质量检查
+│   ├── references/
+│   ├── README.md
+│   └── SKILL.md                  # 本文件
 ```
 
 ---

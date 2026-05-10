@@ -67,14 +67,17 @@ workspace/
 │   │   ├── generate_report_html.js # HTML 仪表盘生成
 │   │   ├── merge_products.js       # 合并产品 JSON
 │   │   └── validate_products.js    # 数据质量检查
-│   ├── reports/                    # 生成的 HTML 报告
 │   ├── package.json
 │   └── README.md
-└── milk_powder_data/data/          # 运行时数据（不入仓库）
-    ├── products/                   # 产品独立 JSON 文件
-    ├── cookies.txt                 # 奶粉智库 session cookies
-    ├── progress.json               # 采集进度跟踪
-    └── merged_products.json        # 合并数据集
+└── milk_powder_data/               # 运行时数据与报告（不入仓库）
+    ├── data/
+    │   ├── products/               # 产品独立 JSON 文件
+    │   ├── cookies.txt             # 奶粉智库 session cookies
+    │   ├── progress.json           # 采集进度跟踪
+    │   └── merged_products.json    # 合并数据集
+    ├── reports/
+    │   └── 奶粉配方对比分析.html    # 交互式 HTML 报告
+    └── 奶粉配方对比分析.xlsx        # Excel 对比报告
 ```
 
 ## 相似度算法
