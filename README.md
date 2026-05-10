@@ -55,7 +55,7 @@ npm run validate
 npm run merge
 ```
 
-**采集新数据：** 参考 [SKILL.md 数据采集指南](https://github.com/<your-username>/milky-lens/blob/main/SKILL.md) 或已安装 skill 的 `references/data-collection.md`
+**采集新数据：** 参考 [SKILL.md 数据采集指南](https://github.com/fryghost/milky-lens/blob/master/SKILL.md) 或已安装 skill 的 `references/data-collection.md`
 
 ## 项目结构
 
