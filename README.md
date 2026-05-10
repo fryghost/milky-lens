@@ -20,7 +20,7 @@
 ### 安装
 
 ```bash
-git clone https://github.com/<your-username>/milky-lens.git
+git clone https://github.com/fryghost/milky-lens.git
 cd milky-lens
 npm install
 ```
