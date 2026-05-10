@@ -1,0 +1,26 @@
+{
+  "name": "milky-lens",
+  "version": "1.0.0",
+  "description": "婴幼儿配方奶粉营养数据采集与分析工具 — 科学对比奶粉配方，辅助换奶决策",
+  "main": "index.js",
+  "scripts": {
+    "validate": "node scripts/validate_products.js",
+    "excel": "node scripts/create_excel.js",
+    "html": "node scripts/generate_report_html.js",
+    "merge": "node scripts/merge_products.js",
+    "report": "npm run validate && npm run excel && npm run html"
+  },
+  "keywords": [
+    "infant-formula",
+    "nutrition",
+    "奶粉",
+    "配方分析",
+    "换奶"
+  ],
+  "author": "",
+  "license": "MIT",
+  "type": "commonjs",
+  "dependencies": {
+    "exceljs": "^4.4.0"
+  }
+}

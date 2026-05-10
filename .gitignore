@@ -1,0 +1,21 @@
+# Dependencies
+node_modules/
+
+# Generated reports
+奶粉配方对比分析.xlsx
+奶粉配方对比分析_v2.xlsx
+reports/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+*.log
+npm-debug.log*
